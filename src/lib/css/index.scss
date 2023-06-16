@@ -1,0 +1,227 @@
+.dcontainer {
+  display: flex;
+  padding: 32px 47px 37px;
+
+  .dleft {
+    width: 420px;
+    margin-right: 22px;
+  }
+
+  .dcenter {
+    flex: 1;
+    position: relative;
+  }
+
+  .dright {
+    width: 420px;
+    margin-left: 22px;
+  }
+
+  .dmain-content {
+    padding: 14px;
+    text-align: center;
+
+    img {
+      // max-width: 342px;
+      width: 342px;
+      border: 2px solid #70D2F9;
+      border-radius: 2px;
+      height: 20vh;
+      cursor: pointer;
+    }
+  }
+
+  .dmain-top {
+    height: calc(56vh + 20px);
+    background: rgba(4, 45, 66, 0.7);
+    margin-bottom: 20px;
+    position: relative;
+    box-sizing: border-box;
+    border: 6px solid transparent;
+    border-right: none;
+    border-left: none;
+    border-image-source: url("../../assets/images/border_bj.png");
+    border-image-width: 6px;
+    border-image-slice: 5;
+    border-image-repeat: stretch;
+    padding: 15px;
+
+    .dtab {
+      .dtab-ul {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        li {
+          width: 217px;
+          height: 45px;
+          line-height: 36px;
+          font-size: 24px;
+          box-sizing: border-box;
+          font-family: "Source Han Sans CN";
+          font-weight: 400;
+          color: #029BDA;
+          margin-right: 20px;
+          text-align: center;
+          border: 3px solid transparent;
+          border-image-source: url("../../assets/images/tab_bj.png");
+          border-image-width: 3px;
+          border-image-slice: 3;
+          border-image-repeat: stretch;
+          cursor: pointer;
+        }
+
+        li.active {
+          border-image-source: url("../../assets/images/tab_bj_checked.png");
+          color: #39FCFF;
+        }
+      }
+    }
+
+    .dcenter-info {
+      // width: 189px;
+      position: absolute;
+      bottom: 32px;
+      left: 42px;
+      background: rgba(2, 64, 82, 0.32);
+      border-radius: 10px;
+      padding: 13px 25px;
+
+      .dcenter-info-ul {
+        li {
+          font-size: 14px;
+          font-family: "Source Han Sans CN";
+          font-weight: 400;
+          color: #CCEFF0;
+          line-height: 43px;
+
+          b {
+            color: #4DF7FC;
+            font-size: 24px;
+            font-family: "Source Han Sans CN";
+            margin-right: 12px;
+            margin-left: 20px;
+          }
+          .mark {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #27FFE8;
+            box-shadow: 0px 0px 6px 0px #2DBCFF;
+            border-radius: 2px;
+            margin-right: 6px;
+            vertical-align: baseline;
+          }
+          .mark-circle {
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .dmain-center:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// 表格
+.dtable-brief.el-table {
+  background-color: transparent;
+
+  tr {
+    background-color: transparent;
+  }
+
+  tr.el-table__row:hover {
+    background-color: darkcyan;
+  }
+
+  th.el-table__cell {
+    background-color: transparent;
+    padding: 5px 0;
+    font-size: 14px;
+    font-family: "PingFang SC";
+    font-weight: 400;
+    color: #29F3F7;
+  }
+
+  th.el-table__cell.is-leaf {
+    border: none;
+  }
+
+  td.el-table__cell {
+    padding: 6px 0;
+    border: none;
+    font-size: 12px;
+    font-family: "PingFang SC";
+    font-weight: 400;
+    color: #dcdfe6;
+    .cell {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.dtable-brief.el-table--enable-row-hover .el-table__body tr:hover>td.el-table__cell {
+  background: transparent;
+  cursor: pointer;
+}
+
+.isNo-th.el-table {
+  th.el-table__cell {
+    padding: 0;
+  }
+
+  td.el-table__cell {
+    padding: 7px 0;
+  }
+}
+
+
+.dtable-brief.el-table::before {
+  display: none;
+}
+
+.alert-dialog {
+  .el-dialog {
+    background: rgba(2, 64, 82, 0.9);
+    border-radius: 2px;
+    padding: 0.078125rem 0.078125rem 0.052083rem;
+    color: #fff;
+    .dialog-title {
+      color: #fff;
+      .el-icon-close:hover {
+        opacity: .6;
+      }
+    }
+  }
+}
+
+.dtable-info{
+  table {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    th {
+      font-size: 14px;
+      color: #67f5f7;
+      border: 1px solid #939497;
+      font-weight: normal;
+      padding: 15px 0;
+      width: 265px;
+    }
+    td {
+      text-align: left;
+      border: 1px solid #939497;
+      padding: 15px 15px 15px 30px;
+      color: #dcdfe6;
+      .content {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
