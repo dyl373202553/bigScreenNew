@@ -2,11 +2,11 @@
   <div class="dcontainer">
     <div class="dleft">
       <CardList :title="leftTitle[Number(type) - 1]">
-        <LineEchart v-if="type === '1'" />
+        <ConnectionsEchart v-if="type === '1'" />
         <RadarEchart v-if="type === '2'" />
         <BarOneEchart v-else-if="type === '3'" />
       </CardList>
-      <CardList :title="'保障任务'">
+      <CardList :title="'大项保障任务'">
         <TableList
           :isNoTh="false"
           :listLabel="taskLabel"
@@ -58,8 +58,9 @@
     </div>
     <div class="dright">
       <CardList :title="rightTitle[Number(type) - 1]">
-        <MeterEchart v-if="type === '1'" />
-        <BarEchart v-else-if="type === '2'" />
+        <LineEchart v-if="type === '1'" />
+        <!-- <BarEchart v-else-if="type === '2'" /> -->
+        <SortBar v-else-if="type === '2'" />
         <LineEchart2 v-else-if="type === '3'" />
       </CardList>
       <CardList :title="'信息服务产品'">
@@ -83,14 +84,16 @@ import { Component, Vue } from "vue-property-decorator";
 import { taskLabel, articleLabel } from "@/data/home/home";
 import TableList from "./components/TableList.vue";
 import Tabs from "./components/Tabs.vue";
-import LineEchart from "./components/Echart/LineEchart.vue";
+import ConnectionsEchart from "./components/Echart/ConnectionsEchart.vue";
 import RadarEchart from "./components/Echart/RadarEchart.vue";
 import BarEchart from "./components/Echart/BarEchart.vue";
 import MeterEchart from "./components/Echart/MeterEchart.vue";
 import MapEchart from "./components/Echart/MapEchart.vue";
 import MapEchart2 from "./components/Echart/MapEchart2.vue";
+import SortBar from "./components/Echart/SortBar.vue";
 import MapEchart3 from "./components/Echart/MapEchart3.vue";
 import BarOneEchart from "./components/Echart/BarOneEchart.vue";
+import LineEchart from "./components/Echart/LineEchart.vue";
 import LineEchart2 from "./components/Echart/LineEchart2.vue";
 import ProjectInfo from "./components/ProjectInfo.vue";
 import CardList from "./components/CardList.vue";
@@ -102,7 +105,8 @@ import dayjs from "dayjs"
   components: {
     TableList,
     Tabs,
-    LineEchart,
+    SortBar,
+    ConnectionsEchart,
     RadarEchart,
     BarEchart,
     MeterEchart,
@@ -110,6 +114,7 @@ import dayjs from "dayjs"
     MapEchart2,
     MapEchart3,
     BarOneEchart,
+    LineEchart,
     LineEchart2,
     CardList,
     ProjectInfo
@@ -121,8 +126,8 @@ export default class Home extends Vue {
   private articleLabel: any = []; // 政务活动
   private type: any = "1";
 
-  private leftTitle = ["流量趋势图", "攻击类型分布", "保障任务情况"];
-  private rightTitle = ["运行指数", "事件趋势图", "通信设备使用情况"];
+  private leftTitle = ["连接数", "病毒防护事件统计", "保障任务情况"];
+  private rightTitle = ["接口流量(1小时,2023/06/01)", "安全事件统计", "通信设备使用情况"];
 
   private async created() {
     this.taskLabel = taskLabel;
