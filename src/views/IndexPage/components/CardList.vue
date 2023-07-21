@@ -24,6 +24,7 @@ export default class CardList extends Vue {
 
 <style lang="less" scoped>
 .dmain-center {
+  overflow: hidden;
   height: 28vh;
   background: rgba(4, 45, 66, 0.7);
   margin-bottom: 20px;
