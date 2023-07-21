@@ -1,13 +1,13 @@
 <template>
   <div class="main-chart">
-    <!-- 攻击类型分布 -->
+    <!-- 病毒防护事件 -->
     <div ref="myChart" class="echart-main"></div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { getAttackTypeData } from "@/api/IndexPage/echart";
+import { getVirusProtectionData } from "@/api/IndexPage/echart";
 import * as echarts from "echarts";
 import dayjs from "dayjs";
 @Component({
@@ -44,21 +44,22 @@ export default class RadarEchart extends Vue {
     }
 
     const arr: { name: any; max: string }[] = [];
-    const brr: any = [];
+    let brr: any = [];
     const sevenDay = dayjs().subtract(7, "day").format("YYYY-MM-DD");
     const yesterday = dayjs().subtract(1, "day").format("YYYY-MM-DD");
-    const { code, data } = await getAttackTypeData({
-      attackTime: [sevenDay + " " + "00:00:00", yesterday + " " + "23:59:59"],
+    const { code, data } = await getVirusProtectionData({
+      createTime: [sevenDay + " " + "00:00:00", yesterday + " " + "23:59:59"],
     });
     if (code === 0) {
-      data.forEach((item: any) => {
-        const obj = {
-          name: item.name,
-          max: item.maxCount,
-        };
-        arr.push(obj);
-        brr.push(item.count);
-      });
+      // data.forEach((item: any) => {
+      //   const obj = {
+      //     name: item.name,
+      //     max: item.maxCount,
+      //   };
+      //   arr.push(obj);
+      //   brr.push(item.count);
+      // });
+      brr = data
     }
     // 指定图表的配置项和数据
     // 饼图
@@ -227,40 +228,40 @@ export default class RadarEchart extends Vue {
               show: true,
             },
           },
-          data: [
-            {
-              value: 1313,
-              name: "Inject.bcbj",
-            },
-            {
-              value: 1750,
-              name: "Androm.bdwp",
-            },
-            {
-              value: 1750,
-              name: "僵尸网络",
-            },
-            {
-              value: 1969,
-              name: "蠕虫病毒",
-            },
-            {
-              value: 2188,
-              name: "木马程序",
-            },
-            {
-              value: 2626,
-              name: "异常报文",
-            },
-            {
-              value: 3063,
-              name: "后门攻击",
-            },
-          ],
+          data: brr,
         },
       ],
     };
-
+    // [
+    //   {
+    //     value: 1313,
+    //     name: "Inject.bcbj",
+    //   },
+    //   {
+    //     value: 1750,
+    //     name: "Androm.bdwp",
+    //   },
+    //   {
+    //     value: 1750,
+    //     name: "僵尸网络",
+    //   },
+    //   {
+    //     value: 1969,
+    //     name: "蠕虫病毒",
+    //   },
+    //   {
+    //     value: 2188,
+    //     name: "木马程序",
+    //   },
+    //   {
+    //     value: 2626,
+    //     name: "异常报文",
+    //   },
+    //   {
+    //     value: 3063,
+    //     name: "后门攻击",
+    //   },
+    // ]
     option && this.myChart.setOption(option);
   }
 }

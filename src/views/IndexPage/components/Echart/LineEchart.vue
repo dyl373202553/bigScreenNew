@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { getTrafficTrendsData } from "@/api/IndexPage/echart"
+import { getInterfaceTrafficData } from "@/api/IndexPage/echart"
 import dayjs from "dayjs"
 
 @Component({
@@ -42,16 +42,19 @@ export default class LineEchart extends Vue {
       this.myChart = this.$echarts.init(this.$refs.myChart);
     }
     let time: any[] = []
-    let download = []
-    let upload = []
+    let download: any = []
+    let upload: any = []
     const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD')
-    const {code, data} = await getTrafficTrendsData({connectTime: [yesterday+" "+"00:00:00", yesterday+" "+"23:59:59"]})
+    // const {code, data} = await getInterfaceTrafficData({createTime: ['2023-06-20 17:00:00','2023-06-20 18:59:59']})
+    const {code, data} = await getInterfaceTrafficData({createTime: [dayjs().subtract(1,'hours').format("YYYY-MM-DD HH:mm:ss"),dayjs().format("YYYY-MM-DD HH:mm:ss")]})
     if (code===0) {
-      data.date.forEach((item: any) => {
-        time.push(this.$day(item, "MM/DD HH:ss"))
+      data.forEach((item: any) => {
+        time.push(this.$day(item.name, "MM/DD HH:mm"))
+        download.push(item.down)
+        upload.push(item.up)
       })
-      download = data.download
-      upload = data.upload
+      // download = data.download
+      // upload = data.upload
     }
 
     // 指定图表的配置项和数据
@@ -166,7 +169,7 @@ export default class LineEchart extends Vue {
           type: "line",
           showAllSymbol: true,
           symbol: "circle",
-          symbolSize: 6,
+          symbolSize: 0,
           lineStyle: {
             color: "#0092f6",
           },
@@ -199,7 +202,7 @@ export default class LineEchart extends Vue {
           type: "line",
           showAllSymbol: true,
           symbol: "circle",
-          symbolSize: 6,
+          symbolSize: 0,
           lineStyle: {
             color: "#aecb56",
           },

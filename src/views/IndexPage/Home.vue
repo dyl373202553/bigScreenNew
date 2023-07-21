@@ -34,7 +34,7 @@
             <li><i class="mark mark-circle"></i>站点数量<b>{{baseCollectInfo.count}}</b>个</li>
             <li><i class="mark mark-circle"></i>上行速率<b>{{baseCollectInfo.upload}}</b>{{baseCollectInfo.uploadUnit}}</li>
             <li><i class="mark mark-circle"></i>下行速率<b>{{baseCollectInfo.download}}</b>{{baseCollectInfo.downloadUnit}}</li>
-            <li><i class="mark mark-circle"></i>网络延时<b>{{baseCollectInfo.delay}}</b>{{baseCollectInfo.delayUnit}}</li>
+            <!-- <li><i class="mark mark-circle"></i>网络延时<b>{{baseCollectInfo.delay}}</b>{{baseCollectInfo.delayUnit}}</li> -->
           </ul>
           <!-- 攻击态势 -->
           <ul class="dcenter-info-ul" v-else-if="type === '2'">
@@ -58,6 +58,7 @@
     </div>
     <div class="dright">
       <CardList :title="rightTitle[Number(type) - 1]">
+        <!-- <div slot='right' v-if="Number(type)===1">dfdfd</div> -->
         <LineEchart v-if="type === '1'" />
         <!-- <BarEchart v-else-if="type === '2'" /> -->
         <SortBar v-else-if="type === '2'" />
@@ -127,7 +128,7 @@ export default class Home extends Vue {
   private type: any = "1";
 
   private leftTitle = ["连接数", "病毒防护事件统计", "保障任务情况"];
-  private rightTitle = ["接口流量(1小时,2023/06/01)", "安全事件统计", "通信设备使用情况"];
+  private rightTitle = ["接口流量(1小时,"+dayjs().format('YYYY/MM/DD')+")", "安全事件统计", "通信设备使用情况"];
 
   private async created() {
     this.taskLabel = taskLabel;
@@ -171,7 +172,7 @@ export default class Home extends Vue {
 
     if (baseCollectInfo.code === 0) {
       this.baseCollectInfo = baseCollectInfo.data
-      this.baseCollectInfo.delay = baseCollectInfo.data.delay.toFixed(2)
+      // this.baseCollectInfo.delay = baseCollectInfo.data.delay.toFixed(2)
     }
   }
 

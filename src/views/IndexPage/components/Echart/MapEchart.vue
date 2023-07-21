@@ -47,7 +47,8 @@ export default class MapEChart extends Vue {
     const points: any = []
     const coords: any = []
     const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD')
-    const {code, data} = await getMapRegionData({createTime:[yesterday+" "+"00:00:00", yesterday+" "+"23:59:59"]})
+    // const {code, data} = await getMapRegionData({createTime:[yesterday+" "+"00:00:00", yesterday+" "+"23:59:59"]})
+    const {code, data} = await getMapRegionData({createTime:["1970-01-01 00:00:00", "2970-12-30 23:59:59"]})
     if (code===0) {
       data.base.forEach((item: any) => {
         const obj = {

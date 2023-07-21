@@ -46,7 +46,8 @@ export default class MapEChart2 extends Vue {
     let coords: any = []
     const sevenDay = dayjs().subtract(7, 'day').format('YYYY-MM-DD')
     const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD')
-    const {code, data} = await getCollectLevelTypeData({attackTime: [sevenDay+" "+"00:00:00", yesterday+" "+"23:59:59"]})
+    // const {code, data} = await getCollectLevelTypeData({attackTime: [sevenDay+" "+"00:00:00", yesterday+" "+"23:59:59"]})
+    const {code, data} = await getCollectLevelTypeData({attackTime: ["1970-01-01 00:00:00", "2970-12-30 23:59:59"]})
     if (code===0) {
       // data.point.forEach((item: any) => {
       //   const obj: any = {

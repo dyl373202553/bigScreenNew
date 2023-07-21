@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { getLevelTypeData } from "@/api/IndexPage/echart";
+import { getBananaData } from "@/api/IndexPage/echart";
 import dayjs from "dayjs";
 import * as echarts from "echarts";
 @Component({
@@ -44,6 +44,26 @@ export default class SortBar extends Vue {
       this.myChart = this.$echarts.init(this.$refs.myChart);
     }
 
+    // let xData = ["类别1", "类别2", "类别3", "类别4", "类别5"];
+    // let yData = [4757, 3254, 2454, 2011, 1654, 1211, 1211, 254];
+    let xData: any = [];
+    let yData: any = [];
+  
+    let brr: any = [];
+    const sevenDay = dayjs().subtract(7, "day").format("YYYY-MM-DD");
+    const yesterday = dayjs().subtract(1, "day").format("YYYY-MM-DD");
+    const { code, data } = await getBananaData({
+      createTime: [sevenDay + " " + "00:00:00", yesterday + " " + "23:59:59"],
+    });
+
+    if (code === 0) {
+      data.forEach((item: any) => {
+        xData.push(item.name)
+        yData.push(item.value)
+      })
+    }
+    
+
     const hexToRgba = (hex: any, opacity: any) => {
       let rgbaColor = "";
       let reg = /^#[\da-f]{6}$/i;
@@ -56,13 +76,11 @@ export default class SortBar extends Vue {
     };
 
     // 数据整理
-    let xData = ["类别1", "类别2", "类别3", "类别4", "类别5"];
-    let yData = [4757, 3254, 2454, 2011, 1654, 1211, 1211, 254];
     let max = Math.max(...yData);
-    let labelColor = ["#FD5360", "#FF962B", "#FFAA00"];
-    let emptyData = yData.map((v, i) => {
-      let color = i > 2 ? "#1890FF" : labelColor[i];
-      let item = {
+    let labelColor = ["#39FCFF", "#39FCFF", "#39FCFF"];
+    let emptyData = yData.map((v: any, i: any) => {
+      let color: any = i > 2 ? "#fff" : labelColor[i];
+      let item: any = {
         value: max,
         label: {
           formatter: "{a|" + v + "}",
@@ -86,9 +104,9 @@ export default class SortBar extends Vue {
       };
       return item;
     });
-    let xDataFormat = xData.map((v, i) => {
-      let color = i > 2 ? "#333333" : labelColor[i];
-      let item = {
+    let xDataFormat = xData.map((v: any, i: any) => {
+      let color: any = i > 2 ? "#fff" : labelColor[i];
+      let item: any = {
         value: v,
         textStyle: {
           rich: {
@@ -98,7 +116,7 @@ export default class SortBar extends Vue {
               height: 20,
               align: "center",
               verticalAlign: "middle",
-              backgroundColor: "#fff",
+              backgroundColor: "rgb(41 103 121)",
               borderRadius: 10,
               borderColor: hexToRgba(color, 0.2),
               borderWidth: 1,
@@ -109,7 +127,7 @@ export default class SortBar extends Vue {
               padding: [0, 5],
             },
             value: {
-              color: "#666666",
+              color: "#fff",
             },
           },
         },
@@ -125,10 +143,10 @@ export default class SortBar extends Vue {
       backgroundColor: "transparent",
       grid: {
         top: "5%",
-        left: "1%",
-        right: "15%",
-        bottom: "3%",
-        containLabel: true,
+        left: "20%",
+        right: "20%",
+        bottom: "8%",
+        // containLabel: true,
       },
       xAxis: [
         {
@@ -145,7 +163,7 @@ export default class SortBar extends Vue {
             },
           },
           axisLabel: {
-            color: "#666",
+            color: "#39FCFF",
           },
         },
       ],
@@ -161,7 +179,7 @@ export default class SortBar extends Vue {
           },
           axisLine: {
             lineStyle: {
-              color: "#D9D9D9",
+              color: "#1d4f63",
             },
           },
           axisLabel: {
@@ -257,6 +275,7 @@ export default class SortBar extends Vue {
 <style lang="less" scoped>
 .main-chart {
   height: 21vh;
+  width: 100%;
 }
 .echart-main {
   width: 100%;

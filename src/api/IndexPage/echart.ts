@@ -35,3 +35,15 @@ export const getReportDeviceTypeData = (params: any) => { return getData(`${scre
 
 // 保障任务态势详情
 export const getNetTaskDetail = (id: string) => { return getData(`${screen}/net-task/get`, { id }) }
+
+// 连接数
+export const getConnectionsData = (params: any) => { return getData(`${screen}/log-firewall-snmp/collect/connect`, { ...params }) }
+
+// 接口流量
+export const getInterfaceTrafficData = (params: any) => { return getData(`${screen}/log-firewall-snmp/collect/up/down`, { ...params }) }
+
+// 病毒防护事件统计
+export const getVirusProtectionData = (params: any) => { return getData(`${screen}/log-firewall/collect/apple`, { ...params }) }
+
+// 安全事件统计
+export const getBananaData = (params: any) => { return getData(`${screen}/log-firewall/collect/banana`, { ...params }) }
