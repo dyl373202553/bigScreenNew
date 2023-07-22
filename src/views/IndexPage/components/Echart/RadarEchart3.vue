@@ -47,7 +47,6 @@ export default class MeterEchart extends Vue {
     const { code, data } = await getCherryData({});
     if (code === 0) {
       if (data) {
-        console.log(data)
         delay = data;
       }
     }
@@ -64,8 +63,8 @@ export default class MeterEchart extends Vue {
             lineStyle: {
               width: 20,
               color: [
-                [0.4, "rgb(122, 224, 228)"],
-                [0.8, "rgb(76, 163, 220)"],
+                [0.25, "rgb(122, 224, 228)"],
+                [0.75, "rgb(76, 163, 220)"],
                 [1, "rgb(244, 101, 107)"],
               ],
             },

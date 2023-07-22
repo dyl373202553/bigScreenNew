@@ -43,7 +43,6 @@ export default class PieEchart1 extends Vue {
     }
     const {code, data} = await getConnectionsRateData({})
     if (code===0) {
-      console.log(data)
     }
 
     // 指定图表的配置项和数据

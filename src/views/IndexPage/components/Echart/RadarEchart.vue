@@ -108,7 +108,6 @@ export default class RadarEchart extends Vue {
             normal: {
               show: true,
               formatter: function (param: any) {
-                console.log(param);
                 let style = "";
                 switch (param.name) {
                 }

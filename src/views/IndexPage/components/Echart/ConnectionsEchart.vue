@@ -18,6 +18,7 @@ export default class ConnectionsEchart extends Vue {
   $echarts: any;
   $day: any;
   private myChart: any = null;
+  private timer: any = null
 
   protected mounted() {
     // 新建一个promise对象
@@ -34,6 +35,15 @@ export default class ConnectionsEchart extends Vue {
     window.addEventListener("resize", () => {
       this.myChart.resize();
     });
+
+    this.timer = setInterval(() => {
+      setTimeout(this.getChart, 0)
+    }, 1000*10)
+  }
+
+  private beforeDestroy(){
+    clearInterval(this.timer);        
+    this.timer = null;
   }
 
   private async getChart() {
@@ -45,7 +55,6 @@ export default class ConnectionsEchart extends Vue {
     let download: any = []
     let upload = []
     const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD')
-    console.log(dayjs().subtract(1,'hours').format("HH:mm"))
     // const {code, data} = await getConnectionsData({createTime: ['2023-06-20 17:00:00','2023-06-20 18:59:59']})
     const {code, data} = await getConnectionsData({createTime: [dayjs().subtract(1,'hours').format("YYYY-MM-DD HH:mm:ss"),dayjs().format("YYYY-MM-DD HH:mm:ss")]})
     if (code===0) {
