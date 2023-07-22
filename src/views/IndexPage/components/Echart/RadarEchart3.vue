@@ -39,7 +39,7 @@ export default class MeterEchart extends Vue {
 
     this.timer = setInterval(() => {
       setTimeout(this.getChart, 0)
-    }, 1000*10)
+    }, 1000*60)
   }
 
   private beforeDestroy(){
