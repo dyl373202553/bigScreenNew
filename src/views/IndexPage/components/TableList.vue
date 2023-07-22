@@ -63,6 +63,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { getNetTaskDetail } from "@/api/IndexPage/echart"
 import Dialog from "@/components/public/Dialog.vue"
 import TaskDetail from "./TaskDetail.vue"
+import { ConfigModule } from "@/store/module/config"
+const { urlDev } = ConfigModule
 @Component({
   name: "TableList",
   components: { Dialog, TaskDetail }
@@ -98,7 +100,7 @@ export default class TableList extends Vue {
       } else {
         articleTitle = encodeURIComponent("战场环境")
       }
-      const url = "http://43.140.252.68:8000/portal/detail?id=" + row.id + "&type=4" + "&title=" + articleTitle
+      const url = urlDev + "/portal/detail?id=" + row.id + "&type=4" + "&title=" + articleTitle
       window.open(url, "_blank");
     }
   }

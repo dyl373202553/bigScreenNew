@@ -7,6 +7,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { getProjectList } from "@/api/IndexPage/home"
+import { ConfigModule } from "@/store/module/config"
+const { urlDev } = ConfigModule
 
 @Component({
   name: "ProjectInfo",
@@ -22,7 +24,7 @@ export default class ProjectInfo extends Vue {
   }
 
   private goPage() {
-    window.open("http://43.140.252.68:8000/portal/infoProduct", "_blank");
+    window.open(`${urlDev}/portal/infoProduct`, "_blank");
   }
 }
 </script>

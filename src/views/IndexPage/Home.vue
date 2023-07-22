@@ -18,7 +18,7 @@
         />
       </CardList>
       <CardList :title="'敌情'">
-        <span slot="right" class="title-more" @click="goPage('http://43.140.252.68:8000/portal/intelligence')">更多...</span>
+        <span slot="right" class="title-more" @click="goPage(`${urlDev}/portal/intelligence`)">更多...</span>
         <TableList
           :isNoTh="true"
           :listLabel="articleLabel"
@@ -49,7 +49,7 @@
         </div>
       </div>
       <CardList :title="'我情'">
-        <span slot="right" class="title-more" @click="goPage('http://43.140.252.68:8000/portal/dynamic')">更多...</span>
+        <span slot="right" class="title-more" @click="goPage(`${urlDev}/portal/dynamic`)">更多...</span>
         <TableList
           :isNoTh="true"
           :listLabel="articleLabel"
@@ -71,7 +71,7 @@
         <ProjectInfo />
       </CardList>
       <CardList :title="'战场环境'">
-        <span slot="right" class="title-more" @click="goPage('http://43.140.252.68:8000/portal/environment')">更多...</span>
+        <span slot="right" class="title-more" @click="goPage(`${urlDev}/portal/environment`)">更多...</span>
         <TableList
           :isNoTh="true"
           :listLabel="articleLabel"
@@ -105,6 +105,8 @@ import ProjectInfo from "./components/ProjectInfo.vue";
 import CardList from "./components/CardList.vue";
 import { getArticleList, getTaskList, getArticleStateList, getArticleEnvironmentList, getBaseCollectInfo } from "@/api/IndexPage/home";
 import dayjs from "dayjs"
+import { ConfigModule } from "@/store/module/config"
+const { urlDev } = ConfigModule
 
 @Component({
   name: "Home",

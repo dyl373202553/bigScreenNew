@@ -32,6 +32,10 @@ class Config extends VuexModule implements ConfigState {
   public upLoadAction = `/portal-file/api/file/provider`
   public wisdomadm = `/portal-zhxz/api` // 员工服务
   public screen = `screen-api/lb`
+  // http://43.140.252.68:8000 // 测试
+  // http://27.144.38.241 // 内部
+  // http://8083.zhfwxt.bg.lq:8099` // 办公
+  public urlDev= `http://43.140.252.68:8000` // 测试环境
 
   @Mutation
   public setInclude(arr: any) {
