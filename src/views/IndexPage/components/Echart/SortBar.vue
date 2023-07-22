@@ -20,6 +20,7 @@ export default class SortBar extends Vue {
   $day: any;
 
   private myChart: any = null;
+  private timer: any = null
 
   private created() {
     // 新建一个promise对象
@@ -36,6 +37,15 @@ export default class SortBar extends Vue {
     window.addEventListener("resize", () => {
       this.myChart.resize();
     });
+
+    this.timer = setInterval(() => {
+        setTimeout(this.getChart, 0)
+      }, 1000*10)
+  }
+
+  private beforeDestroy(){
+    clearInterval(this.timer);        
+    this.timer = null;
   }
 
   private async getChart() {
