@@ -3,11 +3,14 @@
     <div class="dleft">
       <CardList :title="leftTitle[Number(type) - 1]">
         <ConnectionsEchart v-if="type === '1'" />
-        <RadarEchart v-if="type === '2'" />
+        <RadarEchart3 v-else-if="type === '2'" />
         <BarOneEchart v-else-if="type === '3'" />
       </CardList>
-      <CardList :title="'大项保障任务'">
+      <CardList :title="leftCenter[Number(type) - 1]">
+        <LineEchart v-if="type === '1'" />
+        <RadarEchart v-else-if="type === '2'" />
         <TableList
+          v-else-if="type === '3'"
           :isNoTh="false"
           :listLabel="taskLabel"
           :dataList="taskList"
@@ -59,7 +62,7 @@
     <div class="dright">
       <CardList :title="rightTitle[Number(type) - 1]">
         <!-- <div slot='right' v-if="Number(type)===1">dfdfd</div> -->
-        <LineEchart v-if="type === '1'" />
+        <PieEchart1 v-if="type === '1'" />
         <!-- <BarEchart v-else-if="type === '2'" /> -->
         <SortBar v-else-if="type === '2'" />
         <LineEchart2 v-else-if="type === '3'" />
@@ -96,6 +99,8 @@ import MapEchart3 from "./components/Echart/MapEchart3.vue";
 import BarOneEchart from "./components/Echart/BarOneEchart.vue";
 import LineEchart from "./components/Echart/LineEchart.vue";
 import LineEchart2 from "./components/Echart/LineEchart2.vue";
+import PieEchart1 from "./components/Echart/PieEchart1.vue";
+import RadarEchart3 from "./components/Echart/RadarEchart3.vue";
 import ProjectInfo from "./components/ProjectInfo.vue";
 import CardList from "./components/CardList.vue";
 import { getArticleList, getTaskList, getArticleStateList, getArticleEnvironmentList, getBaseCollectInfo } from "@/api/IndexPage/home";
@@ -118,7 +123,9 @@ import dayjs from "dayjs"
     LineEchart,
     LineEchart2,
     CardList,
-    ProjectInfo
+    ProjectInfo,
+    PieEchart1,
+    RadarEchart3
   }
 })
 export default class Home extends Vue {
@@ -127,8 +134,9 @@ export default class Home extends Vue {
   private articleLabel: any = []; // 政务活动
   private type: any = "1";
 
-  private leftTitle = ["连接数", "病毒防护事件统计", "保障任务情况"];
-  private rightTitle = ["接口流量(1小时,"+dayjs().format('YYYY/MM/DD')+")", "安全事件统计", "通信设备使用情况"];
+  private leftTitle = ["连接数", "风险等级", "保障任务情况"];
+  private leftCenter = ["接口流量(1小时,"+dayjs().format('YYYY/MM/DD')+")", "病毒防护事件统计", "大项保障任务"]
+  private rightTitle = ["流量占比(24小时)", "安全事件统计", "通信设备使用情况"];
 
   private async created() {
     this.taskLabel = taskLabel;

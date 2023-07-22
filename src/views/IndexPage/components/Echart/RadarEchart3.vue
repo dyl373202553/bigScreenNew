@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { getDelayData } from "@/api/IndexPage/echart";
+import { getCherryData } from "@/api/IndexPage/echart";
 import dayjs from "dayjs";
 @Component({
   name: "MeterEchart",
@@ -44,12 +44,11 @@ export default class MeterEchart extends Vue {
     }
     const yesterday = dayjs().subtract(1, "day").format("YYYY-MM-DD");
     let delay = 0;
-    const { code, data } = await getDelayData({
-      connectTime: [yesterday + " " + "00:00:00", yesterday + " " + "23:59:59"],
-    });
+    const { code, data } = await getCherryData({});
     if (code === 0) {
       if (data) {
-        delay = data.delay;
+        console.log(data)
+        delay = data;
       }
     }
 
@@ -110,12 +109,12 @@ export default class MeterEchart extends Vue {
             valueAnimation: true,
             fontSize: 16,
             formatter: function (value: number) {
-              if (value <= 40) {
-                return "正常";
-              } else if (40 < value && value <= 70) {
-                return "危险";
-              } else if (value >= 80) {
-                return "高危";
+              if (value <= 25) {
+                return "低";
+              } else if (25 < value && value <= 75) {
+                return "中";
+              } else if (value > 75) {
+                return "高";
               }
               return "";
             },

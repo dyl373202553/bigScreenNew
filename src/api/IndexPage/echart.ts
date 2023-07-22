@@ -47,3 +47,9 @@ export const getVirusProtectionData = (params: any) => { return getData(`${scree
 
 // 安全事件统计
 export const getBananaData = (params: any) => { return getData(`${screen}/log-firewall/collect/banana`, { ...params }) }
+
+// 连接数百分比统计
+export const getConnectionsRateData = (params: any) => { return getData(`${screen}/log-firewall-snmp/collect/up/down/percent`, { ...params }) }
+
+// 风险等级
+export const getCherryData = (params: any) => { return getData(`${screen}/log-firewall/collect/cherry`, { ...params }) }
