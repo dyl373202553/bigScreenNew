@@ -1,6 +1,6 @@
 <template>
   <div class="main-chart">
-    <!-- 流量趋势图 -->
+    <!-- 通信设备使用情况 -->
     <div ref="myChart" class="echart-main"></div>
   </div>
 </template>
@@ -44,11 +44,10 @@ export default class LineEchart2 extends Vue {
     }
 
     let dateTime:any = []
-    var array = [5, 4, 3, 2, 1]
+    var array = [5, 4, 3, 2, 1, 0]
     array.forEach((item: any) => {
       dateTime.push(dayjs().subtract(item, 'month').format('M月'))
     })
-
     const prevMonth = dayjs().subtract(5, 'month').format('YYYY-MM')
     const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD')
     const {code, data} = await getReportDeviceTypeData({beginTime: [prevMonth +"-01"+" "+"00:00:00", yesterday+" "+"23:59:59"]})
