@@ -107,6 +107,10 @@ export default class RadarEchart extends Vue {
     var option: any = {
       backgroundColor: "transparent",
       color: ["#EAEA26", "#906BF9", "#FE5656", "#01E17E", "#3DD1F9", "#FFAD05"],
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b} : {c} (件)'
+      },
       series: [
         {
           stack: "a",
@@ -140,39 +144,39 @@ export default class RadarEchart extends Vue {
               rich: {
                 a: {
                   color: "#fff",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s1: {
                   color: "#F25646",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s2: {
                   color: "#FA971E",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s3: {
                   color: "#EDC644",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s4: {
                   color: "#47B17D",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s5: {
                   color: "#43C9D2",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s6: {
                   color: "#4BCFFC",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s7: {
                   color: "#0892E5",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
                 s8: {
                   color: "#0464DB",
-                  fontSize: "16",
+                  fontSize: "14",
                 },
               },
               position: "outside",
@@ -231,7 +235,7 @@ export default class RadarEchart extends Vue {
             normal: {
               show: true,
               length: 10,
-              length2: 30,
+              length2: 15,
               color: "#4BCFFC",
             },
             emphasis: {
