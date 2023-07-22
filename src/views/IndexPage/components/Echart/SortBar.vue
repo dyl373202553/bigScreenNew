@@ -153,8 +153,8 @@ export default class SortBar extends Vue {
       backgroundColor: "transparent",
       grid: {
         top: "5%",
-        left: "20%",
-        right: "20%",
+        left: "35%",
+        right: "27%",
         bottom: "10%",
         // containLabel: true,
       },
