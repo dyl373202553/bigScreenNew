@@ -106,7 +106,6 @@ import CardList from "./components/CardList.vue";
 import { getArticleList, getTaskList, getArticleStateList, getArticleEnvironmentList, getBaseCollectInfo } from "@/api/IndexPage/home";
 import dayjs from "dayjs"
 import { ConfigModule } from "@/store/module/config"
-const { urlDev } = ConfigModule
 
 @Component({
   name: "Home",
@@ -132,6 +131,10 @@ const { urlDev } = ConfigModule
 })
 export default class Home extends Vue {
   $day: any;
+  get urlDev() {
+    return ConfigModule.urlDev
+  }
+
   private taskLabel: any = []; // 保障任务
   private articleLabel: any = []; // 政务活动
   private type: any = "1";
