@@ -58,6 +58,7 @@ export default class PieEchart1 extends Vue {
     // 指定图表的配置项和数据
     // 折线图
     var option: any = {
+      backgroundColor: 'rgba(4, 45, 66, 0.7)',
       color: ['#59A2FE', '#FFB717', '#FC8F6B', '#70E07B', '#FBDA3D', '#11E5F1', '#E3A0FF', '#8294FC', '#6AD6FE'],
       tooltip: {
           trigger: 'item',
@@ -93,14 +94,16 @@ export default class PieEchart1 extends Vue {
               label: {
                   normal: {
                       formatter: '{a|{b}}\n{per|{d}%}',
+                      color: '#fff',
                       rich: {
                           a: {
                               fontSize: 12,
                               lineHeight: 16,
                               align: 'center',
+                              color: '#fff',
                           },
                           per: {
-                              color: '#545454',
+                              color: '#fff',
                               align: 'center',
                               fontSize: 12,
                               lineHeight: 16,
@@ -112,6 +115,13 @@ export default class PieEchart1 extends Vue {
                   { value: data.up, name: '上行流量' },
                   { value: data.down, name: '下行流量' }
               ],
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
           },
       ],
   };

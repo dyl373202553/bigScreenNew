@@ -155,7 +155,7 @@ export default class SortBar extends Vue {
         top: "5%",
         left: "20%",
         right: "20%",
-        bottom: "8%",
+        bottom: "10%",
         // containLabel: true,
       },
       xAxis: [

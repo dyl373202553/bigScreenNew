@@ -50,7 +50,7 @@ export default class LineEchart2 extends Vue {
     })
     const prevMonth = dayjs().subtract(5, 'month').format('YYYY-MM')
     const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD')
-    const {code, data} = await getReportDeviceTypeData({beginTime: [prevMonth +"-01"+" "+"00:00:00", yesterday+" "+"23:59:59"]})
+    const {code, data} = await getReportDeviceTypeData({pageNo:1, pageSize:10, applyTime: [prevMonth +"-01"+" "+"00:00:00", yesterday+" "+"23:59:59"]})
     const arr: any = []
     let colors: string[] = [];
     if (code===0) {
