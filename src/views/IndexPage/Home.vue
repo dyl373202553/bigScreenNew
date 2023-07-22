@@ -161,10 +161,10 @@ export default class Home extends Vue {
 
   private async load() {
     const yesterday = dayjs().subtract(1, "day").format("YYYY-MM-DD")
-    const articleList = await getArticleList({ pageNo: 1, pageSize: 6 }); // 敌方情报
+    const articleList = await getArticleList({ pageNo: 1, pageSize: 5 }); // 敌方情报
     const taskList = await getTaskList({ pageNo: 1, pageSize: 5 }); // 保障任务
-    const articleStateList = await getArticleStateList({ pageNo: 1, pageSize: 6 }); // 我方动态
-    const articleEnvironmentList = await getArticleEnvironmentList({ pageNo: 1, pageSize: 6 }); // 社会环境
+    const articleStateList = await getArticleStateList({ pageNo: 1, pageSize: 5 }); // 我方动态
+    const articleEnvironmentList = await getArticleEnvironmentList({ pageNo: 1, pageSize: 5 }); // 社会环境
     const baseCollectInfo = await getBaseCollectInfo({ connectTime: [yesterday + " " + "00:00:00", yesterday + " " + "23:59:59"] }) // 网络运行态势
 
     if (articleList.code === 0) {
