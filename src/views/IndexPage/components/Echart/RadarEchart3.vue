@@ -146,7 +146,7 @@ export default class MeterEchart extends Vue {
 
 <style lang="less" scoped>
 .main-chart {
-  height: 21vh;
+  height: calc(28vh - 34px - 22px);
 }
 .echart-main {
   width: 100%;

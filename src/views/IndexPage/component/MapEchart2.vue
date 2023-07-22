@@ -214,7 +214,8 @@
 
 <style>
   .chart {
-     height: 50vh;
+    /* height: 50vh; */
+    height: calc(56vh + 20px - 45px - 22px);
     width: 800px;
   }
 </style>

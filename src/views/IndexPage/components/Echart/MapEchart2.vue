@@ -293,7 +293,7 @@ export default class MapEChart2 extends Vue {
 
 <style lang="less" scoped>
 .main-chart {
-  height: 50vh;
+  height: calc(56vh + 20px - 45px - 22px);
 }
 .echart-main {
   width: 83%;

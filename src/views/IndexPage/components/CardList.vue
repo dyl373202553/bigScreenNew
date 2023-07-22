@@ -4,9 +4,7 @@
       <span>{{title}}</span>
       <slot name="right"></slot>
     </div>
-    <div>
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 

@@ -391,7 +391,7 @@ export default class MapEchart3 extends Vue {
   position: relative;
 }
 .main-chart {
-  height: 50vh;
+  height: calc(56vh + 20px - 45px - 22px);
 }
 .echart-main {
   width: 83%;

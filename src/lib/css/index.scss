@@ -20,13 +20,13 @@
   .dmain-content {
     padding: 14px;
     text-align: center;
-
+    height: calc(28vh - 34px - 28px - 22px);
     img {
       // max-width: 342px;
       width: 342px;
       border: 2px solid #70D2F9;
       border-radius: 2px;
-      height: 20vh;
+      height: 100%;
       cursor: pointer;
     }
   }

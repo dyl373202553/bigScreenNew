@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dmain-center-table">
     <div :class="dclass">
       <el-table :data="dataList" class="dtable-brief" :class="{'isNo-th': isNoTh}" @row-click="rowClick">
         <template v-for="item in listLabel">
@@ -120,5 +120,8 @@ export default class TableList extends Vue {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.dmain-center-table {
+  height: calc(28vh - 34px - 22px);
 }
 </style>
