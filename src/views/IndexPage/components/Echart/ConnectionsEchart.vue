@@ -56,7 +56,9 @@ export default class ConnectionsEchart extends Vue {
     let upload = []
     const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD')
     // const {code, data} = await getConnectionsData({createTime: ['2023-06-20 17:00:00','2023-06-20 18:59:59']})
-    const {code, data} = await getConnectionsData({createTime: [dayjs().subtract(1,'hours').format("YYYY-MM-DD HH:mm:ss"),dayjs().format("YYYY-MM-DD HH:mm:ss")]})
+    // const {code, data} = await getConnectionsData({createTime: [dayjs().subtract(1,'hours').format("YYYY-MM-DD HH:mm:ss"),dayjs().format("YYYY-MM-DD HH:mm:ss")]})
+    const {code, data} = await getConnectionsData({createTime: [dayjs().format("YYYY-MM-DD")+' '+(dayjs().hour()-1)+':'+dayjs().format("mm:ss"),dayjs().format("YYYY-MM-DD HH:mm:ss")]})
+    
     if (code===0) {
       data.forEach((item: any) => {
         time.push(this.$day(item.name, "HH:mm"))
