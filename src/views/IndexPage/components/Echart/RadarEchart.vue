@@ -92,7 +92,7 @@ export default class RadarEchart extends Vue {
         c2: "#55C27C",
       },
       {
-        c1: " #45EAFF",
+        c1: "#45EAFF",
         c2: "#40ADAC",
       },
       {
@@ -100,8 +100,16 @@ export default class RadarEchart extends Vue {
         c2: "#7DE8FF",
       },
       {
-        c1: " #0176D3",
+        c1: "#0176D3",
         c2: "#13B7FF",
+      },
+      {
+        c1: "#5b087b",
+        c2: "#c67ae4",
+      },
+      {
+        c1: "#0d3aae",
+        c2: "#86a4f2",
       },
     ];
     var option: any = {
@@ -188,36 +196,36 @@ export default class RadarEchart extends Vue {
           itemStyle: {
             normal: {
               color: function (params: any) {
-                const colorList = [
-                  {
-                    c1: "#c5223b",
-                    c2: "#fa768a",
-                  },
-                  {
-                    c1: " #de7110",
-                    c2: "#fecd70",
-                  },
-                  {
-                    c1: "#d09f08",
-                    c2: "#FFD145",
-                  },
-                  {
-                    c1: "#238483",
-                    c2: "#55C27C",
-                  },
-                  {
-                    c1: " #45EAFF",
-                    c2: "#40ADAC",
-                  },
-                  {
-                    c1: "#12B3F8",
-                    c2: "#7DE8FF",
-                  },
-                  {
-                    c1: " #0176D3",
-                    c2: "#13B7FF",
-                  },
-                ];
+                // const colorList = [
+                //   {
+                //     c1: "#c5223b",
+                //     c2: "#fa768a",
+                //   },
+                //   {
+                //     c1: " #de7110",
+                //     c2: "#fecd70",
+                //   },
+                //   {
+                //     c1: "#d09f08",
+                //     c2: "#FFD145",
+                //   },
+                //   {
+                //     c1: "#238483",
+                //     c2: "#55C27C",
+                //   },
+                //   {
+                //     c1: " #45EAFF",
+                //     c2: "#40ADAC",
+                //   },
+                //   {
+                //     c1: "#12B3F8",
+                //     c2: "#7DE8FF",
+                //   },
+                //   {
+                //     c1: " #0176D3",
+                //     c2: "#13B7FF",
+                //   },
+                // ];
                 return new echarts.graphic.LinearGradient(1, 0, 0, 0, [
                   {
                     offset: 0,
