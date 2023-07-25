@@ -48,6 +48,11 @@ export default class SortBar extends Vue {
     this.timer = null;
   }
 
+  private getValue(val: any) {
+    const arr = val.split("_")
+    return arr[2]?arr[2].substr(0,13)+"..." : val.substr(0,13)+"..." 
+  }
+
   private async getChart() {
     //初始化
     if (this.myChart == null) {
@@ -117,7 +122,7 @@ export default class SortBar extends Vue {
     let xDataFormat = xData.map((v: any, i: any) => {
       let color: any = i > 2 ? "#fff" : labelColor[i];
       let item: any = {
-        value: v.substr(0,13)+"...",
+        value: this.getValue(v),
         textStyle: {
           rich: {
             // a: {
