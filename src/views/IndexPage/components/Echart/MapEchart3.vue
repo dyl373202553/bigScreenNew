@@ -437,7 +437,7 @@ export default class MapEchart3 extends Vue {
       color: #e4e4e4;
       display: flex;
       .dth {
-        width: 60px;
+        // width: 60px;
       }
       .dtd {
         flex: 1;

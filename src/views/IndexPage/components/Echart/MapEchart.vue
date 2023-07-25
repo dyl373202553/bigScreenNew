@@ -53,11 +53,11 @@ export default class MapEChart extends Vue {
       data.base.forEach((item: any) => {
         const obj = {
           value: [item.lng, item.lat],
-          itemStyle: { color: "#FDFF2B" }
+          itemStyle: { color: "#FDFF2B" },
+          name: item.name
         }
         points.push(obj)
       });
-
       data.line.forEach((item: any) => {
         const obj = {
           coords: [
@@ -214,7 +214,7 @@ export default class MapEChart extends Vue {
           type: "effectScatter",
           coordinateSystem: "geo", // 该系列使用的坐标系
           showEffectOn: "render", // 配置何时显示特效
-          zlevel: 1,
+          zlevel: 4,
           rippleEffect: { // 涟漪特效相关配置
             // // number: 3, //波纹数量
             // period: 15, // 动画的周期，秒速
@@ -235,6 +235,35 @@ export default class MapEChart extends Vue {
           //     show: true,
           //   },
           // },
+          // label: {
+          //   normal: {
+          //     show: true,
+          //     position: 'right', //显示位置
+          //     offset: [5, 0], //偏移设置
+          //     formatter: function (params: { data: any }) {
+          //       //圆环显示文字
+          //       return params.data.name;
+          //     },
+          //     fontSize: 14,
+          //     color: "#fff",
+          //   },
+          //   emphasis: {
+          //     show: true,
+          //   },
+          // },
+          emphasis: {
+            disabled: false,
+            label:  {
+              position: 'right', //显示位置
+              offset: [5, 0], //偏移设置
+              show: true,
+              fontSize: 14,
+              color: "#fff",
+              formatter: function (params: any) {
+                return params.data.name;
+              }
+            }
+          },
           symbolSize: 10,
           data: points,
         },
