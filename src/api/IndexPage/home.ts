@@ -2,7 +2,7 @@ import { getData } from "@/lib/js/request"
 import { ConfigModule } from "@/store/module/config"
 const { screen } = ConfigModule
 // 产品信息
-export const getProjectList = (params: any) => { return getData(`${screen}/net-magazine/page`, { ...params }) }
+export const getProjectList = (params: any) => { return getData(`${screen}/net-magazine/page/contentLevel`, { ...params }) }
 
 // 保障任务
 export const getTaskList = (params: any) => { return getData(`${screen}/net-task/page`, { ...params }) }

@@ -19,7 +19,7 @@ export default class ProjectInfo extends Vue {
   protected async mounted() {
     const { code, data}  = await getProjectList({})
     if (code === 0) {
-      this.dataInfo = data.list[0]
+      this.dataInfo = data[0]
     }
   }
 
