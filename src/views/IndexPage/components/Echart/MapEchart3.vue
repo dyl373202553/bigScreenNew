@@ -72,6 +72,7 @@ export default class MapEchart3 extends Vue {
   private alertData = {}
   private dialogShow = false
   private dialogTitle = "保障任务详情"
+  private timer: any = null
 
   protected mounted() {
     // 新建一个promise对象
@@ -88,8 +89,17 @@ export default class MapEchart3 extends Vue {
     window.addEventListener("resize", () => {
       this.myChart.resize();
     });
+
+    this.timer = setInterval(() => {
+      setTimeout(this.getChart, 0)
+    }, 1000*60)
   }
   
+  private beforeDestroy(){
+    clearInterval(this.timer);        
+    this.timer = null;
+  }
+
   private async getChart() {
     const _this = this;
     //初始化

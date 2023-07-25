@@ -18,6 +18,7 @@ export default class MapEChart2 extends Vue {
   $day: any;
 
   private myChart: any = null;
+  private timer: any = null
 
   protected mounted() {
     // 新建一个promise对象
@@ -34,6 +35,15 @@ export default class MapEChart2 extends Vue {
     window.addEventListener("resize", () => {
       this.myChart.resize();
     });
+
+    this.timer = setInterval(() => {
+      setTimeout(this.getChart, 0)
+    }, 1000*60)
+  }
+
+  private beforeDestroy(){
+    clearInterval(this.timer);        
+    this.timer = null;
   }
 
   private async getChart() {
