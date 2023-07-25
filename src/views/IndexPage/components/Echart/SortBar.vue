@@ -103,7 +103,7 @@ export default class SortBar extends Vue {
               borderWidth: 1,
               borderType: "dashed",
               padding: [0, 0, 2, 0],
-              width: 60,
+              width: 40,
               height: 18,
               align: "center",
               verticalAlign: "middle",
@@ -117,25 +117,25 @@ export default class SortBar extends Vue {
     let xDataFormat = xData.map((v: any, i: any) => {
       let color: any = i > 2 ? "#fff" : labelColor[i];
       let item: any = {
-        value: v,
+        value: v.substr(0,13)+"...",
         textStyle: {
           rich: {
-            a: {
-              color: color,
-              width: 20,
-              height: 20,
-              align: "center",
-              verticalAlign: "middle",
-              backgroundColor: "rgb(41 103 121)",
-              borderRadius: 10,
-              borderColor: hexToRgba(color, 0.2),
-              borderWidth: 1,
-              shadowColor: hexToRgba(color, 0.1),
-              shadowBlur: 5,
-            },
-            b: {
-              padding: [0, 5],
-            },
+            // a: {
+            //   color: color,
+            //   width: 20,
+            //   height: 20,
+            //   align: "center",
+            //   verticalAlign: "middle",
+            //   backgroundColor: "rgb(41, 103, 121)",
+            //   borderRadius: 10,
+            //   borderColor: hexToRgba(color, 0.2),
+            //   borderWidth: 1,
+            //   shadowColor: hexToRgba(color, 0.1),
+            //   shadowBlur: 5,
+            // },
+            // b: {
+            //   padding: [0, 5],
+            // },
             value: {
               color: "#fff",
             },
@@ -153,8 +153,8 @@ export default class SortBar extends Vue {
       backgroundColor: "transparent",
       grid: {
         top: "5%",
-        left: "35%",
-        right: "27%",
+        left: "40%",
+        right: "20%",
         bottom: "10%",
         // containLabel: true,
       },
