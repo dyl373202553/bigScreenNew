@@ -17,7 +17,7 @@ export default class Tabs extends Vue {
   private list = [
     {
       id: "01",
-      title: "网络运行态势",
+      title: "计算机网络运行态势",
       type: "1"
     },
     {
